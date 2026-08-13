@@ -1,11 +1,40 @@
-<nav>
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
-    <a href="/mathematics/">Mathematics</a>
-    <a href="/teaching/">Teaching</a>
-    <a href="/aviation/">Aviation</a>
-    <a href="/photography/">Photography</a>
-    <a href="/projects/">Projects</a>
-    <a href="/cv/">CV</a>
-    <a href="/contact/">Contact</a>
-</nav>
+---
+const currentPath = Astro.url.pathname;
+
+const navigationItems = [
+    { label: "About", href: "/about/" },
+    { label: "Mathematics", href: "/mathematics/" },
+    { label: "Teaching", href: "/teaching/" },
+    { label: "Aviation", href: "/aviation/" },
+    { label: "Photography", href: "/photography/" },
+    { label: "Projects", href: "/projects/" },
+    { label: "CV", href: "/cv/" },
+    { label: "Contact", href: "/contact/" },
+];
+---
+
+<header class="site-header">
+    <div class="header-inner">
+        <a class="site-name" href="/">
+            Nedelescu George-Eduard
+        </a>
+
+        <nav class="main-navigation" aria-label="Main navigation">
+            {
+                navigationItems.map((item) => {
+                    const isActive = currentPath.startsWith(item.href);
+
+                    return (
+                        <a
+                            href={item.href}
+                            class:list={{ active: isActive }}
+                            aria-current={isActive ? "page" : undefined}
+                        >
+                            {item.label}
+                        </a>
+                    );
+                })
+            }
+        </nav>
+    </div>
+</header>
