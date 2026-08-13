@@ -1,5 +1,8 @@
 import { defineConfig } from 'astro/config';
 
+import sitemap from '@astrojs/sitemap';
+
 export default defineConfig({
-    site: 'https://eduard-nedelescu.github.io'
+  site: 'https://eduard-nedelescu.github.io',
+  integrations: [sitemap()]
 });

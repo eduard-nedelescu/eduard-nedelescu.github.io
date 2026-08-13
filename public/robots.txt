@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eduard-nedelescu.github.io/sitemap-index.xml

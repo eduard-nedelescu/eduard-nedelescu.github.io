@@ -5,8 +5,10 @@ import "../styles/global.css";
 
 const {
     title,
-    description = "Personal website of George-Eduard NEDELESCU."
+    description = "Personal website of Nedelescu George-Eduard."
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -20,9 +22,19 @@ const {
             content="width=device-width, initial-scale=1.0"
         />
 
-        <meta name="description" content={description} />
-
         <title>{title} | George-Eduard NEDELESCU</title>
+
+        <meta name="description" content={description} />
+        <meta name="author" content="George-Eduard NEDELESCU" />
+
+        <link rel="canonical" href={canonicalURL} />
+        <link rel="sitemap" href="/sitemap-index.xml" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={`${title} | George-Eduard NEDELESCU`} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:site_name" content="George-Eduard NEDELESCU" />
     </head>
 
     <body>
